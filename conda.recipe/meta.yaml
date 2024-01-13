@@ -1,0 +1,36 @@
+package:
+  name: ocp_serializer
+  version: 1.0.0
+
+source:
+  path: ..
+
+build:
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vvv
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+
+  host:
+    - python
+    - pip
+    - pybind11 >=2.10.0
+    - occt
+
+  run:
+    - python
+
+
+test:
+  imports:
+    - ocp_serializer
+  source_files:
+    - tests
+  commands:
+    - python tests/test.py
+
+about:
+  summary: An example project built with pybind11.
+  license_file: LICENSE
