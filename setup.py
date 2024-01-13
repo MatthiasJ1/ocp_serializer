@@ -1,7 +1,7 @@
 # Available at setup time due to pyproject.toml
 from pybind11.setup_helpers import Pybind11Extension, build_ext
 from setuptools import setup
-import os
+import os, sys
 
 __version__ = "1.0.0"
 description="Serialize OCCT objects for OCP"
@@ -23,7 +23,7 @@ ext_modules = [
             ("VERSION_INFO", __version__),
             ("DESCRIPTION", description),
         ],
-        include_dirs = [os.path.expandvars("$CONDA_PREFIX/include/opencascade")],
+        include_dirs = [os.path.join(sys.prefix, "include/opencascade")],
         libraries = ["TKBRep"],
     ),
 ]
