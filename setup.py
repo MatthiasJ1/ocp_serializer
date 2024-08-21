@@ -24,7 +24,9 @@ ext_modules = [
             ("DESCRIPTION", description),
         ],
         include_dirs = [os.path.join(sys.prefix, "include/opencascade")],
+        library_dirs = [os.path.join(sys.prefix, "lib")],
         libraries = ["TKBRep"],
+        extra_compile_args=["-O3"],
     ),
 ]
 
